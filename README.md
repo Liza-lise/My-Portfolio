@@ -38,5 +38,5 @@ The live website link will be added here once GitHub Pages is configured.
 
 **Lizalise Hlangani**
 
-* GitHub: [Visit my GitHub profile](https://github.com/YOUR-USERNAME)
+* GitHub:https://liza-lise.github.io/My-Portfolio/
 * LinkedIn: Add your LinkedIn profile link here.
