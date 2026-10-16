@@ -1,42 +1,35 @@
-# ICT Portfolio
+# Lizalise Hlangani — ICT Student Portfolio
 
-Welcome to my personal ICT portfolio! This project showcases my technical skills, learning journey, and projects in Information and Communication Technology.
+A responsive, buildless portfolio for an ICT student specialising in Application Development at Durban University of Technology.
 
-## About Me
+## Pages
 
-I am an ICT professional with a background in Application Development, interested in IT Support, Networking, and Software Development. I am continuously improving my technical skills through practical projects and hands-on learning.
+- Overview: introduction, technical interests, badges, featured projects, contact form.
+- About: background, education, and technical skills.
+- Projects: Cisco Packet Tracer coffee shop simulation and this portfolio.
+- CV & documents: three tailored CVs and matching cover letters.
+- Certificates: Cisco credentials with links to Credly.
 
-## Technologies
+## Run locally
 
-* HTML5
-* CSS3
-* JavaScript
-* C#
-* SQL and Database Fundamentals
-* Computer Networking
+From the project folder, run `python -m http.server 8000 --bind 127.0.0.1`, then open http://127.0.0.1:8000. No build step or package installation is needed.
 
-## Portfolio Sections
+Asset paths use the exact casing of the CSS, JS, Images, and Documents folders so the site also works on case-sensitive static hosts.
 
-* **Home:** Introduction and professional overview
-* **About:** My background and interests
-* **Skills:** Technical skills and areas of development
-* **Projects:** Practical work and projects
-* **Contact:** Ways to connect with me
+## Contact form
 
-## Project Goals
+The form uses the existing Formspree endpoint, with native HTML validation, pending and error feedback, and a 15-second timeout. The endpoint must be active in the owner's Formspree account. Actual delivery requires a live submission; automated checks do not send messages.
 
-* Build a responsive and user-friendly website.
-* Practise HTML, CSS, and JavaScript.
-* Showcase my ICT projects and technical development.
-* Build a professional online presence.
+## Editing
 
-## View the Website
+- Shared colours and base styles: `CSS/base.css`.
+- Layouts, cards, and responsive styles: `CSS/main.css`.
+- Contact submission: `JS/main.js`.
+- Career PDFs: `Documents/`.
 
-The live website link will be added here once GitHub Pages is configured.
+Preserve exact filename casing when updating assets. Keep credential links and student details current.
 
 ## Author
 
-**Lizalise Hlangani**
-
-* GitHub:https://liza-lise.github
-* LinkedIn: https://www.linkedin.com/in/lizalise-hlangani-87b4a82a8
+- GitHub: https://github.com/Liza-lise
+- LinkedIn: https://www.linkedin.com/in/lizalise-hlangani-87b4a82a8
