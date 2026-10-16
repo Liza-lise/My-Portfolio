@@ -1,48 +1,36 @@
-
-const contactForm = document.getElementById("contact-form");
-const formStatus = document.getElementById("form-status");
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
 
 if (contactForm && formStatus) {
-    contactForm.addEventListener("submit", async function (event) {
+    contactForm.addEventListener('submit', async (event) => {
         event.preventDefault();
-
-        const submitButton = contactForm.querySelector(
-            'button[type="submit"]'
-        );
-
+        if (!contactForm.reportValidity()) return;
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        if (submitButton.disabled) return;
+        const originalLabel = submitButton.textContent;
         submitButton.disabled = true;
-        submitButton.textContent = "Sending...";
-
-        formStatus.textContent = "";
-
-        const formData = new FormData(contactForm);
-
+        submitButton.textContent = 'Sending…';
+        contactForm.setAttribute('aria-busy', 'true');
+        formStatus.dataset.state = 'pending';
+        formStatus.textContent = 'Sending your message…';
         try {
-            const response = await fetch(
-                "https://formspree.io/f/myekplwq",
-                {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        Accept: "application/json"
-                    }
-                }
-            );
-
-            if (response.ok) {
-                formStatus.textContent =
-                    "Thank you! Your message has been sent.";
-                contactForm.reset();
-            } else {
-                formStatus.textContent =
-                    "Message not sent. Please check the form and try again.";
-            }
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { Accept: 'application/json' },
+                signal: AbortSignal.timeout(15000)
+            });
+            if (!response.ok) throw new Error('Submission failed');
+            formStatus.dataset.state = 'success';
+            formStatus.textContent = 'Thank you! Your message has been sent.';
+            contactForm.reset();
         } catch (error) {
-            formStatus.textContent =
-                "Connection error. Please check your internet and try again.";
+            formStatus.dataset.state = 'error';
+            formStatus.textContent = 'Your message could not be sent. Please try again, or connect with me on LinkedIn using the link below.';
         } finally {
             submitButton.disabled = false;
-            submitButton.textContent = "Send Message →";
+            submitButton.textContent = originalLabel;
+            contactForm.removeAttribute('aria-busy');
         }
     });
 }
